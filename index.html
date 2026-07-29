@@ -1,58 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tam Tatlı</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tam Tatlı CRM</title>
 
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
 
-  <meta name="theme-color" content="#111827">
+    <meta name="theme-color" content="#111827">
 </head>
 
 <body>
 
 <header class="header">
-  <h1>📦 Tam Tatlı</h1>
-  <p>Калькулятор прибыли</p>
+
+    <h1>📦 Tam Tatlı CRM</h1>
+
+    <p>Учет продаж и прибыли</p>
+
 </header>
 
+<section class="dashboard">
+
+    <div class="card">
+        <span>📦 Продано</span>
+        <h2 id="packs">0</h2>
+    </div>
+
+    <div class="card">
+        <span>💰 Выручка</span>
+        <h2 id="revenue">0 ₽</h2>
+    </div>
+
+    <div class="card">
+        <span>💵 Прибыль</span>
+        <h2 id="profit">0 ₽</h2>
+    </div>
+
+    <div class="card">
+        <span>📈 Средняя прибыль</span>
+        <h2 id="average">0 ₽</h2>
+    </div>
+
+</section>
+
+<section class="search">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="🔍 Поиск товара">
+
+</section>
+
 <main id="products">
-  <!-- Здесь позже автоматически появятся товары -->
+
 </main>
 
-<footer class="footer">
+<footer>
 
-  <div class="info">
-    <h3>📦 Продано упаковок</h3>
-    <span id="packs">0</span>
-  </div>
+<button id="reset">
 
-  <div class="info">
-    <h3>💰 Выручка</h3>
-    <span id="revenue">0 ₽</span>
-  </div>
+🔄 Начать новый день
 
-  <div class="info">
-    <h3>💵 Чистая прибыль</h3>
-    <span id="profit">0 ₽</span>
-  </div>
+</button>
 
-  <button id="reset">
-    🔄 Очистить
-  </button>
+<button id="share">
+
+📤 Поделиться отчетом
+
+</button>
 
 </footer>
 
 <script src="app.js"></script>
+
 <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js");
-  });
+
+if ("serviceWorker" in navigator){
+
+navigator.serviceWorker.register("./service-worker.js")
+
 }
+
 </script>
+
 </body>
+
 </html>
