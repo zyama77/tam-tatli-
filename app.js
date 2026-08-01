@@ -11,32 +11,44 @@ const products = [
 
 const container = document.getElementById("products");
 
-function render() {
-  container.innerHTML = "";
-
-  let totalPacks = 0;
-  let totalRevenue = 0;
-  let totalProfit = 0;
+function renderProducts() {
+  productsContainer.innerHTML = "";
 
   products.forEach((product, index) => {
-    totalPacks += product.count;
-    totalRevenue += product.count * product.price;
-    totalProfit += product.count * product.profit;
+    const card = document.createElement("div");
+    card.className = "product";
 
-    container.innerHTML += `
-      <div class="product">
-        <div class="product-name">${product.name}</div>
+    card.innerHTML = `
+      <h2>${product.name}</h2>
 
-        <div class="controls">
-          <button class="minus" onclick="change(${index},-1)">−</button>
+      <div class="product-info">
+        <div>💰 Цена: <b>${product.price.toLocaleString("ru-RU")} ₽</b></div>
+        <div>📦 Продано: <b>${product.sold}</b></div>
+      </div>
 
-          <div class="count">${product.count}</div>
+      <div class="buttons">
 
-          <button class="plus" onclick="change(${index},1)">+</button>
-        </div>
+        <button class="cash-btn"
+          onclick="cashSale(${index})">
+          💵 Продать за наличные
+        </button>
+
+        <button class="debt-btn"
+          onclick="debtSale(${index})">
+          🤝 Продать в долг
+        </button>
+
+        <button class="cancel-btn"
+          onclick="cancelSale(${index})">
+          ↩ Отменить последнюю продажу
+        </button>
+
       </div>
     `;
+
+    productsContainer.appendChild(card);
   });
+}
 
   document.getElementById("packs").textContent = totalPacks;
   document.getElementById("revenue").textContent =
